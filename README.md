@@ -1,6 +1,6 @@
-# Phixilab Yocto Docker Project
+# Yocto Builder Project
 
-This project sets up a Docker environment for building Yocto projects. It uses Docker to create a consistent and isolated build environment.
+This project sets up a Docker environment for building Yocto projects, ensuring a consistent and isolated build setup.
 
 ## Table of Contents
 
@@ -13,42 +13,44 @@ This project sets up a Docker environment for building Yocto projects. It uses D
 
 ## Prerequisites
 
-- **Docker**: Ensure Docker is installed on your machine. For installation, refer to the [Docker installation guide](https://docs.docker.com/get-docker/).
-- **Yocto Project Directory**: Have a local directory with your Yocto project ready.
+- **Docker**: Ensure Docker is installed on your system. Follow the [Docker installation guide](https://docs.docker.com/get-docker/) for instructions.
+- **Yocto Project Directory**: Have a local directory with your Yocto project ready. Use absolute paths, as Docker only supports them for mounting volumes.
 
 ## Setup
 
 1. **Clone the Repository**:
 
+   Clone the repository to your local machine:
+
    ```bash
-   git clone https://github.com/yourusername/phixilab-yocto-docker.git
-   cd phixilab-yocto-docker
+   git clone https://github.com/yourusername/yocto-builder.git
+   cd yocto-builder
    ```
 
 2. **Prepare Your Local Directory**:
 
-   Make sure your Yocto project directory is ready. This directory will be mounted into the Docker container.
+   Ensure your Yocto project directory is available. This directory will be mounted into the Docker container.
 
 ## Usage
 
-1. **Run the Build Script**:
+1. **Run the Script**:
 
-   Execute the `build-yocto.sh` script with your Yocto project directory path. Use an absolute path, as Docker requires it.
+   Use the `run_yocto_container.sh` script to build the Docker image and start the container. Replace `<absolute-path-to-your-directory>` with the absolute path to your Yocto project directory.
 
    ```bash
-   ./build-yocto.sh /absolute/path/to/your/yocto-project
+   ./run_yocto_container.sh <absolute-path-to-your-directory>
    ```
 
-   - The script checks if the directory exists.
+   - The script checks if the provided directory exists.
    - If valid, it builds the Docker image and starts the container with the directory mounted.
 
 2. **Access the Docker Container**:
 
-   Once the container starts, you'll be inside its interactive terminal. Your Yocto project directory is mounted at `/home/yoctobuilder/yocto-project`.
+   Once the container starts, you’ll be in its interactive terminal. Your Yocto project directory is mounted at `/home/yoctobuilder/yocto-project`.
 
 3. **Build Your Yocto Project**:
 
-   Inside the container, navigate to the mounted directory and run your Yocto build commands.
+   Inside the container, navigate to the mounted directory and execute your Yocto build commands.
 
    ```bash
    cd /home/yoctobuilder/yocto-project
@@ -57,22 +59,19 @@ This project sets up a Docker environment for building Yocto projects. It uses D
 
 ## Troubleshooting
 
-- **Docker Permissions**: You might need to use `sudo` for Docker commands.
-- **Directory Path**: Ensure the provided path is an absolute path and that the directory exists.
-- **Script Permissions**: Ensure `build-yocto.sh` is executable:
+- **Docker Permissions**: Depending on your setup, you might need to use `sudo` for Docker commands.
+- **Directory Path**: Ensure the path provided to the script is an absolute path and the directory exists.
+- **Script Permissions**: Ensure the `run_yocto_container.sh` script has execute permissions:
 
   ```bash
-  chmod +x build-yocto.sh
+  chmod +x run_yocto_container.sh
   ```
 
 ## Contributing
 
-Contributions are welcome. Please submit a pull request or open an issue for discussions.
+Contributions are welcome! Please submit a pull request or open an issue for any improvements or discussions.
 
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
----
-
-This README provides basic instructions for using the Phixilab Yocto Docker project. Adjust any specifics as needed.

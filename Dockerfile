@@ -40,6 +40,12 @@ RUN apt-get update && \
     util-linux \
     sudo
 
+RUN apt-get update && \
+    apt-get install -y \
+    libgl1-mesa-dev \
+    mesa-common-dev && \
+    rm -rf /var/lib/apt/lists/*
+
 
 # Set up the locale
 RUN locale-gen en_US.UTF-8

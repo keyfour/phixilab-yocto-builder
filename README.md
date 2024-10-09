@@ -23,7 +23,7 @@ This project sets up a Docker environment for building Yocto projects, ensuring 
    Clone the repository to your local machine:
 
    ```bash
-   git clone https://github.com/yourusername/yocto-builder.git
+   git clone https://github.com/keyfour/yocto-builder.git
    cd yocto-builder
    ```
 
